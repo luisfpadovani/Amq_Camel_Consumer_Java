@@ -8,11 +8,7 @@ public class SimpleRouteBuilder extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("jms:queue:FILA.TRABALHO.FIAP").process(new Processor() { 
-            public void process(Exchange e) {
-                System.out.println("Received exchange: " + e.getIn());
-            }
-        });
+        from("jms:queue:FILA.TRABALHO.FIAP").to("stream:out"));
     }
 
 }
